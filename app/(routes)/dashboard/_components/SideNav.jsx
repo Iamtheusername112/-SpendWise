@@ -3,6 +3,7 @@
 import { UserButton } from "@clerk/nextjs";
 import { LayoutGrid, PiggyBank, ReceiptText, ShieldCheck } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -46,13 +47,15 @@ const SideNav = () => {
 
       <div className="mt-5">
         {menuList.map((menu, index) => (
-          <h2
-            className={`flex gap-2 items-center text-gray-500 font-medium p-5 cursor-pointer rounded-md hover:text-primary hover:bg-blue-100
+          <Link href={menu.path}>
+            <h2
+              className={`flex gap-2 items-center text-gray-500 font-medium mb-2 p-5 cursor-pointer rounded-md hover:text-primary hover:bg-blue-100
             ${path == menu.path && "text-primary bg-blue-100"} `}
-          >
-            <menu.icon />
-            {menu.name}
-          </h2>
+            >
+              <menu.icon />
+              {menu.name}
+            </h2>
+          </Link>
         ))}
       </div>
       <div className="fixed bottom-10 p-5 flex gap-2 items-center">
